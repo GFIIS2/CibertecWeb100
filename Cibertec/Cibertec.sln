@@ -5,9 +5,19 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.Models", "Cibertec.Models\Cibertec.Models.csproj", "{00B7C042-D694-4731-B338-17BD921532C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Repositories", "Cibertec.Repositories\Cibertec.Repositories.csproj", "{0B8E5A46-5316-4206-9B51-9ECE7D3A7944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.Repositories", "Cibertec.Repositories\Cibertec.Repositories.csproj", "{0B8E5A46-5316-4206-9B51-9ECE7D3A7944}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.RepositoriesTests", "Cibertec.RepositoriesTests\Cibertec.RepositoriesTests.csproj", "{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cibertec.Repositories.EntityFrameworkTests", "Cibertec.RepositoriesTests\Cibertec.Repositories.EntityFrameworkTests.csproj", "{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9E334E8D-174C-4EC2-A9C3-F052A34CC011}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E0FDE082-B553-40D5-8769-C3AF637E9CA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Repositories.EntityFramework", "Cibertec.Repositories.EntityFramework\Cibertec.Repositories.EntityFramework.csproj", "{43179D77-EB7C-4D7D-8ED7-E42CB24E018F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Repositories.Dapper", "Cibertec.Repositories.Dapper\Cibertec.Repositories.Dapper.csproj", "{747E67AD-3134-4740-A8FC-4FF0B44B5EBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Repositories.DapperTests", "Cibertec.Repositories.DapperTests\Cibertec.Repositories.DapperTests.csproj", "{A7A96E07-3754-44EF-B6DB-98F5E344F910}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +37,29 @@ Global
 		{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43179D77-EB7C-4D7D-8ED7-E42CB24E018F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43179D77-EB7C-4D7D-8ED7-E42CB24E018F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43179D77-EB7C-4D7D-8ED7-E42CB24E018F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43179D77-EB7C-4D7D-8ED7-E42CB24E018F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747E67AD-3134-4740-A8FC-4FF0B44B5EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747E67AD-3134-4740-A8FC-4FF0B44B5EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747E67AD-3134-4740-A8FC-4FF0B44B5EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747E67AD-3134-4740-A8FC-4FF0B44B5EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A96E07-3754-44EF-B6DB-98F5E344F910}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A96E07-3754-44EF-B6DB-98F5E344F910}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A96E07-3754-44EF-B6DB-98F5E344F910}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A96E07-3754-44EF-B6DB-98F5E344F910}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{00B7C042-D694-4731-B338-17BD921532C3} = {9E334E8D-174C-4EC2-A9C3-F052A34CC011}
+		{0B8E5A46-5316-4206-9B51-9ECE7D3A7944} = {9E334E8D-174C-4EC2-A9C3-F052A34CC011}
+		{85E7EFF3-EDC1-400B-B42A-9451DEB21FC4} = {E0FDE082-B553-40D5-8769-C3AF637E9CA2}
+		{43179D77-EB7C-4D7D-8ED7-E42CB24E018F} = {9E334E8D-174C-4EC2-A9C3-F052A34CC011}
+		{747E67AD-3134-4740-A8FC-4FF0B44B5EBB} = {9E334E8D-174C-4EC2-A9C3-F052A34CC011}
+		{A7A96E07-3754-44EF-B6DB-98F5E344F910} = {E0FDE082-B553-40D5-8769-C3AF637E9CA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA846BAC-8AC7-454E-B999-B090DFE2217E}

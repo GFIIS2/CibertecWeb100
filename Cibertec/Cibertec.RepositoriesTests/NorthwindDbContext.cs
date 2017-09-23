@@ -1,10 +1,7 @@
 ﻿using Cibertec.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Cibertec.RepositoriesTests
+namespace Cibertec.Repositories.EntityFrameworkTests
 {
     public class NorthwindDbContext: DbContext
     {
