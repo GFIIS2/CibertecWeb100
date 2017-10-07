@@ -11,6 +11,9 @@ using FluentValidation;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 using System.Linq;
+using Cibertec.WebApi.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cibertec.WebApi
 {
@@ -31,6 +34,25 @@ namespace Cibertec.WebApi
 
             services.AddResponseCompression();
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
+
+            var tokenProvider = new RsaJwtTokenProvider("issuer", "audience", "mykeyname");
+            services.AddSingleton<ITokenProvider>(tokenProvider);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = tokenProvider.GetValidationParameters();
+                });
+
+            // This is for the [Authorize] attributes.
+            services.AddAuthorization(auth =>
+            {
+                auth.DefaultPolicy = new AuthorizationPolicyBuilder()
+                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                    .RequireAuthenticatedUser()
+                    .Build();
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -40,6 +62,7 @@ namespace Cibertec.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseAuthentication();
             app.UseResponseCompression();
             app.UseMvc();
         }
