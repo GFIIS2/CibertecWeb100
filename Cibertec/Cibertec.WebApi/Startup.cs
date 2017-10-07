@@ -45,3 +45,4 @@ namespace Cibertec.WebApi
         }
     }
 }
+//https://stackoverflow.com/questions/45715394/asp-net-core-2-0-bearer-auth-without-identity
