@@ -35,7 +35,7 @@ namespace Cibertec.WebApi
             services.AddResponseCompression();
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
 
-            var tokenProvider = new RsaJwtTokenProvider("issuer", "audience", "mykeyname");
+            var tokenProvider = new RsaJwtTokenProvider("issuer", "audience", "token_cibertec_2017");
             services.AddSingleton<ITokenProvider>(tokenProvider);
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -45,7 +45,7 @@ namespace Cibertec.WebApi
                     options.TokenValidationParameters = tokenProvider.GetValidationParameters();
                 });
 
-            // This is for the [Authorize] attributes.
+            
             services.AddAuthorization(auth =>
             {
                 auth.DefaultPolicy = new AuthorizationPolicyBuilder()
