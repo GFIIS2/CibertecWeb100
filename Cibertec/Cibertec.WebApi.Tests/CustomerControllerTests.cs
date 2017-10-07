@@ -10,26 +10,16 @@ namespace Cibertec.WebApi.Tests
 {
     public class CustomerControllerTests
     {
-        private CustomerController _customerController;
+        private readonly CustomerController _customerController;
         public CustomerControllerTests()
         {
-            _customerController = new CustomerController(new NorthwindUnitOfWork(ConfigSettings.NorthwindConnectionString));
+            _customerController = new CustomerController(
+                new NorthwindUnitOfWork(ConfigSettings.NorthwindConnectionString)
+                );
         }
 
         [Fact]
         public void Test_Get_All()
-        {
-            var result = _customerController.GetList() as OkObjectResult;
-
-            Assert.True(result != null);
-            Assert.True(result.Value != null);
-
-            var model = result.Value as List<Customer>;
-            Assert.True(model.Count > 0);
-        }
-
-        [Fact]
-        public void Test_Get_All_Fluent()
         {
             var result = _customerController.GetList() as OkObjectResult;
 
