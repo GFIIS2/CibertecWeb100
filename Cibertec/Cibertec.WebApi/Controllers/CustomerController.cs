@@ -4,16 +4,12 @@ using Cibertec.Models;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Cibertec.WebApi.Controllers
-{
-    [Produces("application/json")]
-    [Route("api/customer")]
-    [Authorize]
-    public class CustomerController : Controller
+{    
+    [Route("api/customer")] 
+    public class CustomerController : BaseController
     {
-        private readonly IUnitOfWork _unit;
-        public CustomerController(IUnitOfWork unit)
+        public CustomerController(IUnitOfWork unit) : base(unit)
         {
-            _unit = unit;
         }
 
         [HttpGet]

@@ -6,12 +6,10 @@ namespace Cibertec.WebApi.Controllers
 {
     [Produces("application/json")]
     [Route("api/order")]
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
-        private readonly IUnitOfWork _unit;
-        public OrderController(IUnitOfWork unit)
+        public OrderController(IUnitOfWork unit) : base(unit)
         {
-            _unit = unit;
         }
 
         [HttpGet]
