@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Cibertec.WebApi.Controllers
 {
     [Produces("application/json")]
-    [Route("customer")]
+    [Route("api/customer")]
     [Authorize]
     public class CustomerController : Controller
     {

@@ -5,7 +5,7 @@ using Cibertec.Models;
 namespace Cibertec.WebApi.Controllers
 {
     [Produces("application/json")]
-    [Route("order")]
+    [Route("api/order")]
     public class OrderController : Controller
     {
         private readonly IUnitOfWork _unit;
