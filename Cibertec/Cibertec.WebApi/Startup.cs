@@ -8,6 +8,9 @@ using FluentValidation.AspNetCore;
 using Cibertec.Models;
 using Cibertec.WebApi.Validators;
 using FluentValidation;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
+using System.Linq;
 
 namespace Cibertec.WebApi
 {
@@ -22,9 +25,12 @@ namespace Cibertec.WebApi
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IUnitOfWork>(option => new NorthwindUnitOfWork(Configuration.GetConnectionString("Northwind")));
             services.AddMvc().AddFluentValidation();
+            services.AddSingleton<IUnitOfWork>(option => new NorthwindUnitOfWork(Configuration.GetConnectionString("Northwind")));
             services.AddTransient<IValidator<Customer>, CustomerValidator>();
+
+            services.AddResponseCompression();
+            services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -34,6 +40,7 @@ namespace Cibertec.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseResponseCompression();
             app.UseMvc();
         }
     }
