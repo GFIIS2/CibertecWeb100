@@ -9,7 +9,7 @@ namespace Cibertec.Repositories.EntityFrameworkTests
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXpress;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

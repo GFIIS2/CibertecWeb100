@@ -12,7 +12,7 @@ namespace Cibertec.Repositories.DapperTests
 
         public CustomerRepositoryTest()
         {
-            unit = new NorthwindUnitOfWork("Server=.;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
+            unit = new NorthwindUnitOfWork("Server=.\\SQLEXpress;Database=Northwind_Lite; Trusted_Connection=True;MultipleActiveResultSets=True");
         }
 
         [Fact(DisplayName = "[CustomerRepository]Get All")]
