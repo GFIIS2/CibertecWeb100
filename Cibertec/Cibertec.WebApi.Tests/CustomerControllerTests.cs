@@ -55,6 +55,23 @@ namespace Cibertec.WebApi.Tests
             model.Should().Be(101);
         }
 
+        [Fact(DisplayName = "[CustomerController] Insert With Error")]
+        public void Insert_Error_Customer_Test()
+        {
+            var customer = new Customer();
+            _customerController.ViewData.ModelState.AddModelError("FirstName", "The first name is required");
+            _customerController.ViewData.ModelState.AddModelError("LastName", "The last name is required");
+
+            var result = _customerController.Post(customer) as BadRequestObjectResult;
+
+            result.Should().NotBeNull();
+            result.Value.Should().NotBeNull();
+
+            var model = result.Value as SerializableError;
+            model.ContainsKey("FirstName").Should().BeTrue();
+            model.ContainsKey("LastName").Should().BeTrue();
+        }
+
         [Fact(DisplayName = "[CustomerController] Update")]
         public void Update_Customer_Test()
         {
@@ -86,6 +103,23 @@ namespace Cibertec.WebApi.Tests
             currentCustomer.Phone.Should().Be(customer.Phone);
         }
 
+        [Fact(DisplayName = "[CustomerController] Update With Error")]
+        public void Update_Error_Customer_Test()
+        {
+            var customer = new Customer();
+            _customerController.ViewData.ModelState.AddModelError("FirstName", "The first name is required");
+            _customerController.ViewData.ModelState.AddModelError("LastName", "The last name is required");
+
+            var result = _customerController.Put(customer) as BadRequestObjectResult;
+
+            result.Should().NotBeNull();
+            result.Value.Should().NotBeNull();
+
+            var model = result.Value as SerializableError;
+            model.ContainsKey("FirstName").Should().BeTrue();
+            model.ContainsKey("LastName").Should().BeTrue();
+        }
+
         [Fact(DisplayName = "[CustomerController] Delete")]
         public void Delete_Customer_Test()
         {
@@ -104,6 +138,20 @@ namespace Cibertec.WebApi.Tests
 
             var currentCustomer = _unitMocked.Customers.GetById(1);
             currentCustomer.Should().BeNull();
+        }
+
+        [Fact(DisplayName = "[CustomerController] Delete With Error")]
+        public void Delete_Error_Customer_Test()
+        {
+            var customer = new Customer { Id = -1 };
+
+            var result = _customerController.Delete(customer) as BadRequestObjectResult;
+
+            result.Should().NotBeNull();
+            result.Value.Should().NotBeNull();
+
+            var model = result.Value?.GetType().GetProperty("Message").GetValue(result.Value);
+            model.Should().Be("Incorrect data.");
         }
 
         [Fact(DisplayName = "[CustomerController] Get By Id")]
