@@ -113,3 +113,6 @@ nav {
       top: auto;
       position: relative; } }
 
+input:invalid {
+  border: 2px solid red; }
+
