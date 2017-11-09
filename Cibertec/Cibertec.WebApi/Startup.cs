@@ -53,6 +53,8 @@ namespace Cibertec.WebApi
                     .RequireAuthenticatedUser()
                     .Build();
             });
+
+            services.AddCors();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -61,6 +63,10 @@ namespace Cibertec.WebApi
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(option =>
+            {
+                option.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+            });
 
             app.UseAuthentication();
             app.UseResponseCompression();
