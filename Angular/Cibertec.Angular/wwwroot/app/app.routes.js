@@ -15,23 +15,15 @@
             .state("login", {
                 url: "/login",
                 templateUrl: 'app/public/login/index.html'
-            })
-            .state("otherwise", {
-                url: '/',
-                templateUrl: 'app/home.html'
-            });
-
-        {/*
-        .state("supplier", {
-                url: "/supplier",
-                templateUrl: 'app/private/supplier/index.html'
-            })
+            })            
             .state("product", {
                 url: "/product",
                 templateUrl: 'app/private/product/index.html'
             })
-        */
-        }
+            .state("otherwise", {
+                url: '/',
+                templateUrl: 'app/home.html'
+            });    
     }
 
 })();
