@@ -14,19 +14,13 @@
         function login(user) {
 
             var defer = $q.defer();
-            var url = configService.getApiUrl() + 'api/Token';            
-            $http.post(url,
-                       user,
-                       {
-                           headers: {
-                               'Content-Type': 'application/x-www-form-urlencoded'
-                           }
-                       })
+            var url = configService.getApiUrl() + '/Token';            
+            $http.post(url,user)
             .then(function (result) {
-                $http.defaults.headers.common.Authorization = 'Bearer ' + result.data.access_token;
+                $http.defaults.headers.common.Authorization = 'Bearer ' + result.data.access_Token;
                 localStorageService.set('userToken',
                     {
-                        token: result.data.access_token,
+                        token: result.data.access_Token,
                         userName: user.userName
                     });
                 configService.setLogin(true);
