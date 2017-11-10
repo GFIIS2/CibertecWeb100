@@ -10,8 +10,7 @@
     </environment>        
 </head>
 <body ng-controller="applicationController as vm"
-      ng-init="init('@ViewBag.WebApiUrl')"
-      class="body-view">
+      ng-init="init('@ViewBag.WebApiUrl')">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -26,9 +25,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a ng-if="!vm.validate()" ui-sref="login" ui-sref-active="active">Login</a></li>
-                    <li><a ng-if="vm.validate()" ng-click="vm.logout()" href="#" ui-sref-active="active">Logout</a></li>
-                    <li><a ng-if="vm.validate()" ui-sref="product" ui-sref-active="active">Product</a></li>
-                    <li><a ng-if="vm.validate()" ui-sref="supplier" ui-sref-active="active">Supplier</a></li>
+                    <li><a ng-if="vm.validate()" ng-click="vm.logout()" href="#" ui-sref-active="active">Logout</a></li>                    
                 </ul>
             </div>
         </div>
@@ -60,12 +57,5 @@
 
         <script src="~/app/public/login/login.controller.js"></script>
     </environment>
-
-    @*<environment names="Development, Production">
-        <script src="~/js/bootstrap.js"></script>
-        <script src="~/js/angular.js"></script>        
-        <script src="~/js/app-site.js"></script>
-        <script src="~/js/app-cibertec.js"></script>        
-    </environment>*@
 </body>
 </html>
