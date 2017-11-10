@@ -5,7 +5,7 @@
     </div>
     <div>
         <button ng-click="vm.create();" data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
-            <span class="glyphicon glyphicon-plus"></span> Crear Producto
+            <span class="glyphicon glyphicon-plus"></span> Create New Product
         </button>
     </div>
     <ul uib-pagination total-items="vm.totalRecords" 
@@ -23,7 +23,7 @@
                       package="{{product.package}}"
                       is-discontinued="product.isDiscontinued">
             <button ng-click="vm.getProduct(product.id); vm.edit();" data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
-                <span class="glyphicon glyphicon-edit"></span> Editar
+                <span class="glyphicon glyphicon-edit"></span> Edit
             </button>
             <button ng-click="vm.getProduct(product.id); vm.delete();" data-toggle="modal" data-target="#modal-container" class="btn btn-danger btn-sm">
                 <span class="glyphicon glyphicon-erase"></span> Delete

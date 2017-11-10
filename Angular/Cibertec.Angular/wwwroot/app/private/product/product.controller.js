@@ -21,7 +21,7 @@
         vm.totalRecords = 0;
         vm.currentPage = 1;
         vm.maxSize = 10;
-        vm.itemsPerPage = 25;
+        vm.itemsPerPage = 30;
 
         //Funciones
         vm.getProduct = getProduct;
@@ -90,7 +90,7 @@
             dataService.putData(apiUrl + '/product', vm.product)
                 .then(function (result) {
                     vm.product = {};
-                    list();
+                    getPageRecords(vm.currentPage);
                     closeModal();
                 },
                 function (error) {
@@ -106,6 +106,7 @@
                     getProduct(result.data);                    
                     detail();
                     getPageRecords(1);
+                    vm.currentPage = 1;
                     vm.showCreate = true;                    
                 },
                 function (error) {
@@ -117,7 +118,7 @@
         function deleteProduct() {
             dataService.deleteData(apiUrl + '/product/' + vm.product.id)
                 .then(function (result) {
-                    list();
+                    getPageRecords(vm.currentPage);
                     closeModal();
                 },
                 function (error) {
@@ -127,8 +128,8 @@
 
         function create() {
             vm.product = {};
-            vm.modalTitle = 'Crear Producto';
-            vm.modalButtonTitle = 'Crear';
+            vm.modalTitle = 'Create Product';
+            vm.modalButtonTitle = 'Create';
             vm.readOnly = false;
             vm.modalFunction = createProduct;
             vm.isDelete = false;
@@ -137,15 +138,15 @@
         function edit() {
             vm.showCreate = false;
 
-            vm.modalTitle = 'Editar Producto';
-            vm.modalButtonTitle = 'Actualizar';
+            vm.modalTitle = 'Edit Product';
+            vm.modalButtonTitle = 'Update';
             vm.readOnly = false;
             vm.modalFunction = updateProduct;
             vm.isDelete = false;
         }
 
         function detail() {
-            vm.modalTitle = 'Producto Creado';
+            vm.modalTitle = 'The New Product Created';
             vm.modalButtonTitle = '';
             vm.readOnly = true;
             vm.modalFunction = null;
@@ -155,8 +156,8 @@
         function productDelete() {
             vm.showCreate = false;
 
-            vm.modalTitle = 'Eliminar Producto';
-            vm.modalButtonTitle = 'Eliminar';
+            vm.modalTitle = 'Delete Product';
+            vm.modalButtonTitle = 'Delete';
             vm.readOnly = false;
             vm.modalFunction = deleteProduct;
             vm.isDelete = true;

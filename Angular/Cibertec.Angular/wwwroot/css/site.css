@@ -55,8 +55,8 @@
   .product-card .buttons-controls {
     bottom: 0;
     position: absolute;
-    padding-bottom: .5rem; }
+    padding-bottom: 1rem; }
     @media (min-width: 768px) {
       .product-card .buttons-controls {
-        padding-bottom: 1rem; } }
+        padding-bottom: 1.3rem; } }
 

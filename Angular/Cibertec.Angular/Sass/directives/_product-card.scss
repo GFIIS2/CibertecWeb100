@@ -18,10 +18,10 @@
     .buttons-controls {
         bottom: 0;
         position: absolute;
-        padding-bottom: .5rem;
+        padding-bottom: 1rem;
 
         @include break-point(md) {
-            padding-bottom: 1rem;
+            padding-bottom: 1.3rem;
         }
     }
 }
