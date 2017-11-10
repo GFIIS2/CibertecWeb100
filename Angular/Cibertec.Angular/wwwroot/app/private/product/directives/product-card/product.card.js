@@ -16,12 +16,7 @@
                 package: '@',
                 isDiscontinued: '='
             },
-            templateUrl: 'app/private/product/directives/product-card/product-card.html',
-            controller: directiveController
+            templateUrl: 'app/private/product/directives/product-card/product-card.html'            
         };
-    }
-
-    function directiveController() {
-
-    }
+    }    
 })();

@@ -12,6 +12,4 @@
             templateUrl: 'app/private/product/directives/product-form/product-form.html'
         };        
     }
-
-
 })();

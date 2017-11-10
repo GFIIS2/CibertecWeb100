@@ -164,8 +164,7 @@
         }
 
         function closeModal() {
-            angular.element('#modal-container').modal('hide');
-            //angular.element("data-dismiss='modal'").click();
+            angular.element('#modal-container').modal('hide');            
         }
     }
 })();
