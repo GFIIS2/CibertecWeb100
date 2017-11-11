@@ -6,17 +6,7 @@
     @include break-point(md) {
         margin-left: 5rem;
         margin-right: 5rem;
-    }
-
-    header {
-        position: fixed;
-        right: 0;
-        left: 0;
-        top: 0;
-        border-width: 0 0 1px;
-        background-color: $site-color-black;
-        height: 4rem;
-    }
+    }    
 
     footer {
         background: $site-color-black;
@@ -34,19 +24,5 @@
         background-color: $background-color;
         margin-bottom: 4rem;
         padding-top: 2rem;
-    }
-
-    .row {
-        width: auto;
-    }
-}
-
-.headerlogo {
-    img {
-        float: left;
-        margin-left: 2rem;
-        margin-top: 10px;
-        width: 40px;
-        height: auto;
-    }
+    }    
 }

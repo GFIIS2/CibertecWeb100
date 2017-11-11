@@ -6,14 +6,6 @@
     body {
       margin-left: 5rem;
       margin-right: 5rem; } }
-  body header {
-    position: fixed;
-    right: 0;
-    left: 0;
-    top: 0;
-    border-width: 0 0 1px;
-    background-color: #000;
-    height: 4rem; }
   body footer {
     background: #000;
     color: #fff;
@@ -28,15 +20,6 @@
     background-color: #fff;
     margin-bottom: 4rem;
     padding-top: 2rem; }
-  body .row {
-    width: auto; }
-
-.headerlogo img {
-  float: left;
-  margin-left: 2rem;
-  margin-top: 10px;
-  width: 40px;
-  height: auto; }
 
 .product-card {
   border: 1px solid black;
