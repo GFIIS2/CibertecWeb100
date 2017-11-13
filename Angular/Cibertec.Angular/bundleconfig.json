@@ -11,7 +11,7 @@
       "wwwroot/libraries/angular/angular.js",
       "wwwroot/libraries/angular/angular-ui-router.js",
       "wwwroot/libraries/angular/angular-local-storage.js",
-      "wwwroot/libraries/angular/ui-bootstrap.js"
+      "wwwroot/libraries/angular/ui-bootstrap-tpls.js"
     ],
     "minify": {
       "enabled": true,
@@ -35,6 +35,7 @@
       "wwwroot/app/app.js",
       "wwwroot/app/app.routes.js",
       "wwwroot/app/app.config.js",
+      "wwwroot/app/app.interceptor.js",
       "wwwroot/app/app.controller.js"
     ],
     "minify": {
@@ -44,8 +45,9 @@
   },
   {
     "inputFiles": [
-      "wwwroot/app/shared/**/*.js",      
-      "wwwroot/app/public/**/*.js"      
+      "wwwroot/app/components/**/*.js",
+      "wwwroot/app/shared/**/*.js",
+      "wwwroot/app/public/**/*.js"
     ],
     "minify": {
       "enabled": true,
