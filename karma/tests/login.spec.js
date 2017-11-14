@@ -1,4 +1,3 @@
-//https://scotch.io/tutorials/testing-angularjs-with-jasmine-and-karma-part-1
 describe('App Login', function(){
     var controller, service;
     beforeEach(function(){module('app');});  

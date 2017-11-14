@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sun Nov 12 2017 22:11:26 GMT-0500 (SA Pacific Standard Time)
+// Generated on Tue Nov 14 2017 17:35:43 GMT-0500 (SA Pacific Standard Time)
 
 module.exports = function(config) {
   config.set({
@@ -13,15 +13,15 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
 
-     // list of files / patterns to load in the browser
-     files: [
-      '../Angular/Cibertec.Angular/wwwroot/js/angular.js',
-      './node_modules/angular-animate/angular-animate.js',
+    // list of files / patterns to load in the browser
+    files: [
+      '../Angular/Cibertec.Angular/wwwroot/js/angular.js',      
       './node_modules/angular-mocks/angular-mocks.js',
       '../Angular/Cibertec.Angular/wwwroot/js/app-site.js',
       '../Angular/Cibertec.Angular/wwwroot/js/app-cibertec.js',
       './tests/**/*.spec.js'
     ],
+
 
     // list of files to exclude
     exclude: [
@@ -37,7 +37,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['spec'],
 
 
     // web server port

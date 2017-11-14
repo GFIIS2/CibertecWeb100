@@ -64,7 +64,7 @@
 
     angular.module('app').service('appInterceptor', appInterceptor);
 
-    angular.injector = ['$q','$state'];
+    angular.$inject = ['$q','$state'];
 
     function appInterceptor($q, $state) {
         return {
