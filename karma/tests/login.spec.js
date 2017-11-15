@@ -1,7 +1,6 @@
 describe('App Login', function(){
     var controller, service;
-    beforeEach(function(){module('app');});  
-    //beforeEach(function(){module('ui.router');});  
+    beforeEach(function(){module('app');});      
 
     beforeEach(inject(function ($controller, _authenticationService_, $q) {
         service = _authenticationService_ ;
