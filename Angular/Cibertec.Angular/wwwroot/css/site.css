@@ -21,6 +21,72 @@
     margin-bottom: 4rem;
     padding-top: 2rem; }
 
+.customer-card {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: .5rem;
+  margin-top: .5rem;
+  height: 200px; }
+  @media (min-width: 768px) {
+    .customer-card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: 230px; } }
+  .customer-card .buttons-controls {
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .customer-card .buttons-controls {
+        padding-bottom: 1.3rem; } }
+
+.order-card {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: .5rem;
+  margin-top: .5rem;
+  height: 150px; }
+  @media (min-width: 768px) {
+    .order-card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: 180px; } }
+  .order-card .buttons-controls {
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .order-card .buttons-controls {
+        padding-bottom: 1.3rem; } }
+
+.order-item-card {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: .5rem;
+  margin-top: .5rem;
+  height: 150px; }
+  @media (min-width: 768px) {
+    .order-item-card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: 180px; } }
+  .order-item-card .buttons-controls {
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .order-item-card .buttons-controls {
+        padding-bottom: 1.3rem; } }
+
 .product-card {
   border: 1px solid black;
   border-radius: 15px;
@@ -41,5 +107,49 @@
     padding-bottom: 1rem; }
     @media (min-width: 768px) {
       .product-card .buttons-controls {
+        padding-bottom: 1.3rem; } }
+
+.supplier-card {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: .5rem;
+  margin-top: .5rem;
+  height: 220px; }
+  @media (min-width: 768px) {
+    .supplier-card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: 250px; } }
+  .supplier-card .buttons-controls {
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .supplier-card .buttons-controls {
+        padding-bottom: 1.3rem; } }
+
+.user-card {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  margin-top: .5rem;
+  margin-top: .5rem;
+  height: 190px; }
+  @media (min-width: 768px) {
+    .user-card {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      height: 200px; } }
+  .user-card .buttons-controls {
+    bottom: 0;
+    position: absolute;
+    padding-bottom: 1rem; }
+    @media (min-width: 768px) {
+      .user-card .buttons-controls {
         padding-bottom: 1.3rem; } }
 

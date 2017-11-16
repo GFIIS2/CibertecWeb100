@@ -4,15 +4,13 @@ using Cibertec.Models;
 
 namespace Cibertec.WebApi.Controllers
 {
-    [Produces("application/json")]
-    [Route("api/product")]
+    [Route("api/Product")]
     public class ProductController : BaseController
     {
         public ProductController(IUnitOfWork unit) : base(unit)
         {
         }
 
-        [HttpGet]
         public IActionResult GetList()
         {
             return Ok(_unit.Products.GetList());
@@ -30,6 +28,7 @@ namespace Cibertec.WebApi.Controllers
         {
             if (ModelState.IsValid)
                 return Ok(_unit.Products.Insert(product));
+
             return BadRequest(ModelState);
         }
 
@@ -37,7 +36,8 @@ namespace Cibertec.WebApi.Controllers
         public IActionResult Put([FromBody] Product product)
         {
             if (ModelState.IsValid && _unit.Products.Update(product))
-                return Ok(new { Message = "The customer is updated" });
+                return Ok(new { Message = "The Order is updated" });
+
             return BadRequest(ModelState);
         }
 
@@ -46,10 +46,10 @@ namespace Cibertec.WebApi.Controllers
         public IActionResult Delete(int? id)
         {
             if (id.HasValue && id.Value > 0)
-                return Ok(_unit.Products.Delete(new Product { Id=id.Value }));
+                return Ok(_unit.Products.Delete(new Product { Id = id.Value}));
+
             return BadRequest(new { Message = "Incorrect data." });
         }
-
 
         [HttpGet]
         [Route("count")]
@@ -57,7 +57,6 @@ namespace Cibertec.WebApi.Controllers
         {
             return Ok(_unit.Products.Count());
         }
-
         [HttpGet]
         [Route("list/{page}/{rows}")]
         public IActionResult GetList(int page, int rows)
@@ -66,5 +65,6 @@ namespace Cibertec.WebApi.Controllers
             var endRecord = page * rows;
             return Ok(_unit.Products.PagedList(startRecord, endRecord));
         }
+
     }
 }

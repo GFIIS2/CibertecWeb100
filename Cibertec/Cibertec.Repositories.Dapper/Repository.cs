@@ -2,16 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace Cibertec.Repositories.Dapper
 {
     public class Repository<T> : IRepository<T> where T : class
     {
         protected string _connectionString;
+
         public Repository(string connectionString)
         {
-            SqlMapperExtensions.TableNameMapper = (type) => { return $"{ type.Name }"; };
+            // evita la pluralizacion
+            SqlMapperExtensions.TableNameMapper = (type) => { return $"[{ type.Name}]"; };
             _connectionString = connectionString;
         }
 

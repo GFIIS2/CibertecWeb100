@@ -1,9 +1,7 @@
 ﻿(function () {
     'use strict';
-
     angular.module('app')
-	.directive('productCard', productCard);
-
+        .directive('productCard', productCard);
     function productCard() {
         return {
             restrict: 'E',
@@ -16,7 +14,8 @@
                 package: '@',
                 isDiscontinued: '='
             },
-            templateUrl: 'app/private/product/directives/product-card/product-card.html'            
+            templateUrl: 'app/private/product/directives/product-card/product-card.html'
+
         };
-    }    
+    }
 })();

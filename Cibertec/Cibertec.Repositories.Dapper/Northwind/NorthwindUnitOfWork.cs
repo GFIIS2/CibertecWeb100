@@ -1,5 +1,8 @@
-﻿using Cibertec.UnitOfWork;
-using Cibertec.Repositories.Northwind;
+﻿using Cibertec.Repositories.Northwind;
+using Cibertec.UnitOfWork;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Cibertec.Repositories.Dapper.Northwind
 {
@@ -8,8 +11,8 @@ namespace Cibertec.Repositories.Dapper.Northwind
         public NorthwindUnitOfWork(string connectionString)
         {
             Customers = new CustomerRepository(connectionString);
-            Orders = new OrderRepository(connectionString);
             OrderItems = new OrderItemRepository(connectionString);
+            Orders = new OrderRepository(connectionString);
             Products = new ProductRepository(connectionString);
             Suppliers = new SupplierRepository(connectionString);
             Users = new UserRepository(connectionString);
@@ -17,9 +20,9 @@ namespace Cibertec.Repositories.Dapper.Northwind
 
         public ICustomerRepository Customers { get; private set; }
 
-        public IOrderRepository Orders { get; private set; }
-
         public IOrderItemRepository OrderItems { get; private set; }
+
+        public IOrderRepository Orders { get; private set; }
 
         public IProductRepository Products { get; private set; }
 

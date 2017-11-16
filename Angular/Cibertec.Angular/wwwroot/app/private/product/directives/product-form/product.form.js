@@ -1,8 +1,7 @@
 ﻿(function () {
     'use strict';
     angular.module('app')
-    .directive('productForm', productForm);
-
+        .directive('productForm', productForm);
     function productForm() {
         return {
             restrict: 'E',
@@ -10,6 +9,6 @@
                 product: '='
             },
             templateUrl: 'app/private/product/directives/product-form/product-form.html'
-        };        
+        };
     }
-})();
+})();

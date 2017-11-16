@@ -2,4 +2,9 @@
 @import 'helpers/colors';
 
 @import 'base/site';
+@import 'directives/customer-card';
+@import 'directives/order-card';
+@import 'directives/order-item-card';
 @import 'directives/product-card';
+@import 'directives/supplier-card';
+@import 'directives/user-card';
