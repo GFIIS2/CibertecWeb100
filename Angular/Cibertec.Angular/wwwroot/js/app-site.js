@@ -30,6 +30,10 @@
                 url: "/product",
                 templateUrl: 'app/private/product/index.html'
             })
+            .state("customer_orders", {
+                url: "/customer/{customerid}",
+                templateUrl: 'app/private/customer/order/customer-order.html'
+            })
             .state("customer", {
                 url: "/customer",
                 templateUrl: 'app/private/customer/index.html'
@@ -65,8 +69,7 @@
 
     function run($http, $state, localStorageService, configService ) {
         var user = localStorageService.get('userToken');
-        if (user && user.token) {
-            $http.defaults.headers.common.Authorization = 'Bearer ' + localStorageService.get('userToken').token;
+        if (user && user.token) {            
             configService.setLogin(true);
         }
         else $state.go('login');
@@ -84,13 +87,20 @@
 
     angular.module('app').service('appInterceptor', appInterceptor);
 
-    angular.$inject = ['$q','$state'];
+    angular.$inject = ['$q', '$state', 'configService', 'localStorageService', '$route'];
 
-    function appInterceptor($q, $state) {
+    function appInterceptor($q, $state, configService, localStorageService) {
         return {
+            request: function (config) {
+                var user = localStorageService.get('userToken');
+                if (user && user.token) {
+                    config.headers.Authorization = 'Bearer ' + user.token;
+                    configService.setLogin(true);
+                }
+                return config;
+            },
             responseError: function (response) {
-                if (response.status == 401)
-                {
+                if (response.status == 401) {                    
                     return $state.go('login');
                 }
                 return $q.reject(response);

@@ -1,7 +1,7 @@
 ﻿<div class="order-card col-sm-3">
     <div><label>Order Date: </label> {{::orderDate}}</div>
     <div><label>Order Number: </label> {{::orderNumber}}</div>
-    <div><label>Customer Id: </label> {{::customerId}}</div>
+    <div ng-if="customerId!==undefined"><label>Customer Id: </label> {{::customerId}}</div>
     <div><label>Total Amount: </label> {{::totalAmount}}</div>
     <div class="buttons-controls">
         <ng-transclude></ng-transclude>

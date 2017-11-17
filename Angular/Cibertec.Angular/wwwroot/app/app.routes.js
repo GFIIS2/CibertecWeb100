@@ -20,6 +20,10 @@
                 url: "/product",
                 templateUrl: 'app/private/product/index.html'
             })
+            .state("customer_orders", {
+                url: "/customer/{customerid}",
+                templateUrl: 'app/private/customer/order/customer-order.html'
+            })
             .state("customer", {
                 url: "/customer",
                 templateUrl: 'app/private/customer/index.html'

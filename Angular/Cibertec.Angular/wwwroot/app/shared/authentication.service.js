@@ -16,8 +16,7 @@
             var defer = $q.defer();
             var url = configService.getApiUrl() + '/Token';            
             $http.post(url,user)
-            .then(function (result) {
-                $http.defaults.headers.common.Authorization = 'Bearer ' + result.data.access_Token;
+            .then(function (result) {                
                 localStorageService.set('userToken',
                     {
                         token: result.data.access_Token,
@@ -32,8 +31,7 @@
             return defer.promise;
         }
 
-        function logout() {
-            $http.defaults.headers.common.Authorization = '';
+        function logout() {            
             localStorageService.remove('userToken');
             configService.setLogin(false);            
         }

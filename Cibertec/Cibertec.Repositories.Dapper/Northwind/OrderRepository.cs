@@ -23,6 +23,20 @@ namespace Cibertec.Repositories.Dapper.Northwind
             }
         }
 
+        public IEnumerable<Order> OrderByCustomer(int customerId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@customerId", customerId);                
+                return connection.Query<Order>(
+                    "dbo.OrderByCustomer",
+                    parameters,
+                    commandType: System.Data.CommandType.StoredProcedure
+                    );
+            }
+        }
+
         public IEnumerable<Order> PagedList(int startRow, int endRow)
         {
             if (startRow >= endRow) return new List<Order>();

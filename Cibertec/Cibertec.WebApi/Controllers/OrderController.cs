@@ -65,5 +65,13 @@ namespace Cibertec.WebApi.Controllers
             var endRecord = page * rows;
             return Ok(_unit.Orders.PagedList(startRecord, endRecord));
         }
+
+        [HttpGet]
+        [Route("bycustomer/{customerid:int}")]
+        public IActionResult GetCustomerOrders(int customerid)
+        {
+            if (customerid <= 0) return BadRequest();
+            return Ok(_unit.Orders.OrderByCustomer(customerid));
+        }
     }
 }

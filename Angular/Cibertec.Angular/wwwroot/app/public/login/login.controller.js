@@ -15,6 +15,9 @@
         init();
 
         function init() {
+            var element = angular.element('.modal-backdrop.fade.in');            
+            if (element) element.remove();
+
             if (configService.getLogin()) $state.go("product");
             authenticationService.logout();
         }

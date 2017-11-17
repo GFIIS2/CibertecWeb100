@@ -36,8 +36,7 @@
             var defer = $q.defer();
             var url = configService.getApiUrl() + '/Token';            
             $http.post(url,user)
-            .then(function (result) {
-                $http.defaults.headers.common.Authorization = 'Bearer ' + result.data.access_Token;
+            .then(function (result) {                
                 localStorageService.set('userToken',
                     {
                         token: result.data.access_Token,
@@ -52,8 +51,7 @@
             return defer.promise;
         }
 
-        function logout() {
-            $http.defaults.headers.common.Authorization = '';
+        function logout() {            
             localStorageService.remove('userToken');
             configService.setLogin(false);            
         }
@@ -98,7 +96,9 @@
         .module('app')
         .factory('configService', configService);
 
-    function configService() {
+    configService.$inject = ['localStorageService'];
+
+    function configService(localStorageService) {
         var service = {};
         var apiUrl = undefined;
         var isLogged = false;
@@ -106,7 +106,7 @@
         service.getLogin = getLogin;
         service.setApiUrl = setApiUrl;
         service.getApiUrl = getApiUrl;
-
+        service.validate = validateLogin;
 
         return service;
 
@@ -124,6 +124,17 @@
 
         function setApiUrl(url) {
             apiUrl = url;
+        }
+
+        function validateLogin() {
+            var user = localStorageService.get('userToken');
+            if (user && user.token) {
+                setLogin(true);
+            }
+            else {
+                setLogin(false);
+            }
+            return isLogged; 
         }
     }
 })();
@@ -330,6 +341,60 @@
         };
     }
 })();
+(function () {
+    'use strict';
+    angular.module('app')
+        .controller('customerOrderController', customerOrderController);
+
+    customerOrderController.$inject = ['$stateParams', '$state', 'dataService','configService'];
+
+    function customerOrderController($stateParams, $state, dataService, configService) {
+
+        //validation
+        if ($stateParams.customerid === undefined || $stateParams.customerid === "" || $stateParams.customerid <= 0) {
+            return $state.go("customer");
+        }
+
+        var vm = this;
+
+        //properties
+        vm.customerId = $stateParams.customerid;
+        vm.customer = null;
+        vm.orderList = [];
+
+        init();
+
+        function init() {
+            getCustomer(vm.customerId);
+        }
+
+        function getCustomer(id) {
+            vm.customer = null;
+            dataService.getData(configService.getApiUrl() + '/customer/' + id)
+                .then(function (result) {
+                    vm.customer = result.data;
+                    getOrderByCustomer(id);
+                },
+                function (error) {
+                    vm.customer = null;                    
+                    vm.orderList = [];
+                    console.log(error);
+                });
+        }
+
+        function getOrderByCustomer(id) {
+            dataService.getData(configService.getApiUrl() + '/order/bycustomer/' + id)
+                .then(function (result) {
+                    vm.orderList = result.data;
+                },
+                function (error) {
+                    vm.orderList = [];
+                    console.log(error);
+                });
+        }
+    }
+
+})();
 (function () {
     'use strict';
     angular.module('app')
@@ -1368,6 +1433,9 @@
         init();
 
         function init() {
+            var element = angular.element('.modal-backdrop.fade.in');            
+            if (element) element.remove();
+
             if (configService.getLogin()) $state.go("product");
             authenticationService.logout();
         }
