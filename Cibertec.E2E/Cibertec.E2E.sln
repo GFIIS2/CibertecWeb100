@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.AutomationTests", "Cibertec.AutomationTests\Cibertec.AutomationTests.csproj", "{9E07726B-98AA-4644-AE71-E8573F08EB3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cibertec.Automation", "Cibertec.Automation\Cibertec.Automation.csproj", "{A5CC467D-FE0F-4B32-87AF-29ECFDEF809C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E07726B-98AA-4644-AE71-E8573F08EB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E07726B-98AA-4644-AE71-E8573F08EB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E07726B-98AA-4644-AE71-E8573F08EB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E07726B-98AA-4644-AE71-E8573F08EB3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5CC467D-FE0F-4B32-87AF-29ECFDEF809C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5CC467D-FE0F-4B32-87AF-29ECFDEF809C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5CC467D-FE0F-4B32-87AF-29ECFDEF809C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5CC467D-FE0F-4B32-87AF-29ECFDEF809C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {634CA60F-DB26-4325-AC66-078900C0FCC4}
+	EndGlobalSection
+EndGlobal
