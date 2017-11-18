@@ -95,10 +95,8 @@
     angular
         .module('app')
         .factory('configService', configService);
-
-    configService.$inject = ['localStorageService'];
-
-    function configService(localStorageService) {
+    
+    function configService() {
         var service = {};
         var apiUrl = undefined;
         var isLogged = false;
@@ -328,8 +326,7 @@
             templateUrl: 'app/private/customer/directives/customer-form/customer-form.html'
         };
     }
-})();
-
+})();
 (function () {
     'use strict';
     angular.module('app')
@@ -584,8 +581,7 @@
             templateUrl: 'app/private/order/directives/order-form/order-form.html'
         };
     }
-})();
-
+})();
 (function () {
     'use strict';
     angular.module('app')
@@ -785,8 +781,7 @@
             templateUrl: 'app/private/order-item/directives/order-item-form/order-item-form.html'
         };
     }
-})();
-
+})();
 (function () {
      'use strict';
     angular.module('app')
@@ -987,8 +982,7 @@
             templateUrl: 'app/private/product/directives/product-form/product-form.html'
         };
     }
-})();
-
+})();
 (function () {
     'use strict';
     angular.module('app')
@@ -1207,8 +1201,7 @@
             templateUrl: 'app/private/supplier/directives/supplier-form/supplier-form.html'
         };
     }
-})();
-
+})();
 (function () {
     'use strict';
     angular.module('app')
@@ -1408,8 +1401,7 @@
             templateUrl: 'app/private/user/directives/user-form/user-form.html'
         };
     }
-})();
-
+})();
 (function () {
     'use strict';
     angular.module('app')

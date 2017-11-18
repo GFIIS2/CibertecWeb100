@@ -4,10 +4,8 @@
     angular
         .module('app')
         .factory('configService', configService);
-
-    configService.$inject = ['localStorageService'];
-
-    function configService(localStorageService) {
+    
+    function configService() {
         var service = {};
         var apiUrl = undefined;
         var isLogged = false;

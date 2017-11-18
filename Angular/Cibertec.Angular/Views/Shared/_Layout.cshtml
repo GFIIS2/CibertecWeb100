@@ -1,11 +1,18 @@
 ﻿<!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="app" ng-strict-di>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cibertec.Angular</title>
-    <link href="~/libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <title>Cibertec.Angular</title>    
+    <environment names="Development">
+        <link href="~/libraries/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Production">
+        <link href="~/libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="~/css/site.min.css" />
+    </environment>
+        
 </head>
 <body ng-controller="applicationController as vm"
       ng-init="init('@ViewBag.WebApiUrl')">
