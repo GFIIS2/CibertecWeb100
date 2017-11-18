@@ -15,6 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      '../Angular/Cibertec.Angular/wwwroot/js/bootstrap.js',
       '../Angular/Cibertec.Angular/wwwroot/js/angular.js',      
       './node_modules/angular-mocks/angular-mocks.js',
       '../Angular/Cibertec.Angular/wwwroot/js/app-site.js',
