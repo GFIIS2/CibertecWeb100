@@ -4,6 +4,10 @@
         <strong>OK</strong> The customer was created properly.
     </div>
 
+    <div ng-show="vm.isCustomerInUse" class="alert alert-info alertdismissable">
+        <a href="" class="close" data-dismiss="alert" arialabel="close">&times;</a>
+        <strong>Info</strong> The customer is in use at this moment.
+    </div>
     <div>
         <button ng-click="vm.create();" data-toggle="modal" data-target="#modal-container" class="btn btn-success btn-sm">
             <span class="glyphicon glyphicon-plus"></span> Create New Customer
@@ -54,5 +58,5 @@
                  is-delete="vm.isDelete">
         <customer-form customer="vm.customer">
         </customer-form>
-    </modal-panel>
+    </modal-panel>    
 </div>

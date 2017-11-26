@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Cibertec.Angular.Code;
+using Cibertec.Angular.Hubs;
 
 namespace Cibertec.Angular
 {
@@ -28,6 +25,7 @@ namespace Cibertec.Angular
         public void ConfigureServices(IServiceCollection services)
         {            
             services.Configure<ConfigurationFile>(Configuration.GetSection("ConfigurationFile"));
+            services.AddSignalR();
             services.AddMvc();
         }
                 
@@ -48,6 +46,11 @@ namespace Cibertec.Angular
             
             app.UseDefaultFiles();
             app.UseStaticFiles();
+
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<CustomerStatus>("customerStatus");
+            });
 
             app.UseMvc(routes =>
             {

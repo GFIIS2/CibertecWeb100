@@ -4,8 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close"
                         data-dismiss="modal"
-                        aria-label="Close"
-                        ng-click="closeFunction();">
+                        aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <h4 class="modal-title">{{title}}</h4>
@@ -13,21 +12,24 @@
             <div class="modal-body">
                 <ng-transclude></ng-transclude>
                 <button ng-if="!readOnly && !isDelete"
-                        class="btn btn-success" 
-                        type="submit" 
-                        ng-click="saveFunction();">{{buttonTitle}}</button>
+                        class="btn btn-success"
+                        type="submit"
+                        ng-click="saveFunction();">
+                    {{buttonTitle}}
+                </button>
                 <button ng-if="isDelete"
                         class="btn btn-danger"
                         type="submit"
                         ng-click="saveFunction();">
                     {{buttonTitle}}
                 </button>
-                <button type="button" 
+                <button type="button"
                         class="btn btn-warning"
-                        data-dismiss="modal"
-                        ng-click="closeFunction();"
-                        aria-label="Close">Close</button>
+                        data-dismiss="modal"                        
+                        aria-label="Close">
+                    Close
+                </button>
             </div>
         </div>
-    </div>
+    </div>    
 </div>

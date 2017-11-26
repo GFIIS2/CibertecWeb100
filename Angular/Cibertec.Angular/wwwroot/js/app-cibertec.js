@@ -1,7 +1,8 @@
 (function () {
+    'use strict';
     angular.module('app')
     .directive('modalPanel', modalPanel);
-
+    
     function modalPanel() {
         return {
             templateUrl: 'app/components/modal/modal-directive.html',
@@ -14,8 +15,23 @@
                 closeFunction: '=',
                 readOnly: '=',
                 isDelete:'='
-            }
-        };
+            },
+            controller: directiveController            
+        };        
+    }
+
+    directiveController.$inject = ['$scope'];
+
+    function directiveController($scope) {
+        init();
+
+        function init() {
+            $(function () {
+                $('#modal-container').on('hidden.bs.modal', function () {
+                    $scope.closeFunction();
+                });
+            })
+        }
     }
 })();
 (function () {
@@ -130,8 +146,8 @@
     angular.module('app')
         .controller('customerController', customerController);
 
-    customerController.$inject = ['dataService', 'configService', '$state', '$scope'];
-    function customerController(dataService, configService, $state, $scope) {
+    customerController.$inject = ['dataService', 'configService', '$state', '$scope', '$timeout'];
+    function customerController(dataService, configService, $state, $scope, $timeout) {
         var apiUrl = configService.getApiUrl();
         var vm = this;
 
@@ -147,6 +163,9 @@
         vm.currentPage = 1;
         vm.maxSize = 10;
         vm.itemsPerPage = 30;
+        vm.customersInUse = [];
+        vm.connection = {};
+        vm.isCustomerInUse = false;
 
         //Funciones
         vm.getCustomer = getCustomer;
@@ -159,7 +178,20 @@
 
         function init() {
             if (!configService.getLogin()) return $state.go('login');
-            configurePagination()
+            configurePagination();
+            vm.connection = new signalR.HubConnection('/customerStatus');
+            
+            vm.connection.start().then(function () {
+                console.log("Connected...");
+                vm.connection.on("customerStatus", function (ids) {
+                    registerId(ids);
+                });
+            });                        
+        }
+
+        function registerId(ids) {
+            vm.customersInUse = ids;
+            console.log(vm.customersInUse);
         }
 
         function configurePagination() {
@@ -199,6 +231,12 @@
 
         function getCustomer(id) {
             vm.customer = null;
+            validateId(id);
+            if (vm.isCustomerInUse) {
+                $timeout(closeModal, 20);               
+                return;
+            }
+            if (vm.readOnly === false) vm.connection.invoke('addCustomerId', id);
             dataService.getData(apiUrl + '/customer/' + id)
                 .then(function (result) {
                     vm.customer = result.data;
@@ -214,7 +252,7 @@
             dataService.putData(apiUrl + '/customer', vm.customer)
                 .then(function (result) {
                     vm.customer = {};
-                    getPageRecords(vm.currentPage);
+                    getPageRecords(vm.currentPage);                          
                     closeModal();
                 },
                 function (error) {
@@ -256,7 +294,7 @@
             vm.modalButtonTitle = 'Create';
             vm.readOnly = false;
             vm.modalFunction = createCustomer;
-            vm.isDelete = false;
+            vm.isDelete = false;            
         }
 
         function edit() {
@@ -265,7 +303,7 @@
             vm.modalButtonTitle = 'Update';
             vm.readOnly = false;
             vm.modalFunction = updateCustomer;
-            vm.isDelete = false;
+            vm.isDelete = false;            
         }
 
         function detail() {
@@ -286,7 +324,16 @@
         }
 
         function closeModal() {
-            angular.element('#modal-container').modal('hide');
+            angular.element('#modal-container').modal('hide');   
+            removeId();
+        }
+
+        function removeId() {
+            if (vm.isCustomerInUse === false) vm.connection.invoke('removeCustomerId', vm.customer.id);
+        }
+
+        function validateId(id) {
+            vm.isCustomerInUse = (vm.customersInUse.indexOf(id) > -1);
         }
     }
 })();
@@ -1171,23 +1218,6 @@
     }
 })();
 
-(function (undefined) {
-
-    'use strict';
-
-    angular.module('app').directive('supplierForm', supplierForm);
-
-    function supplierForm() {
-        return {
-            restrict: 'E',
-            scope: {
-                supplier: '='
-            },
-            templateUrl: 'app/private/supplier/directives/supplier-form/supplier-form.html'
-        };
-    }
-
-})();
 (function () {
     'use strict';
     angular.module('app')
